@@ -1,3 +1,8 @@
+<?php 
+include 'dashboard/config/db.php';
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="tr">
 <head>
@@ -9,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>Franchise | Orbit Coffee Co.</title>
+    <title>İletişim | Orbit Coffee Co.</title>
 
     <!--====== Favicon ======-->
 <?php include 'favicon.php';?>
@@ -38,14 +43,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12 text-center">
-                        <h2 class="page-title">Franchise</h2>
+                        <h2 class="page-title">İletişim</h2>
                         <div class="cafena-breadcrumb breadcrumbs">
                             <ul class="list-unstyled d-flex align-items-center justify-content-center">
                                 <li class="cafenabcrumb-item duxinbcrumb-begin">
                                     <a href="/"><span>Anasayfa</span></a>
                                 </li>
                                 <li class="cafenabcrumb-item duxinbcrumb-end">
-                                    <span>Franchise</span>
+                                    <span>İletişim</span>
                                 </li>
                             </ul>
                         </div>
@@ -61,31 +66,32 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="contact__wrapper">
-                            <div class="row mt-none-30">
-                                
-                                <div class="col-lg-6 col-md-6 mt-30">
-                                    <div class="contact-info d-flex align-items-center justify-content-center">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <img src="assets/images/icons/ci-2.png" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <h3 class="title">Adres</h3>
-                                            <p>KAYACIK MAHALLESİ, İNÖNÜ CADDESİ, NO : 81/B, KARAMÜRSEL, KOCAELİ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 mt-30">
-                                    <div class="contact-info d-flex align-items-center justify-content-center">
-                                        <div class="icon d-flex align-items-center justify-content-center">
-                                            <img src="assets/images/icons/ci-3.png" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <h3 class="title">Çalışma Saatleri</h3>
-                                            <p>Pzt - Pzr (10:00 - 01:00)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row mt-none-30">
+    <div class="col-lg-6 col-md-6 mt-30">
+        <div class="contact-info d-flex align-items-center justify-content-center">
+            <div class="icon d-flex align-items-center justify-content-center">
+                <img src="assets/images/icons/ci-2.png" alt="">
+            </div>
+            <div class="content">
+                <h3 class="title">Adres</h3>
+                <p><?php echo $contact['address']; ?></p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 mt-30">
+        <div class="contact-info d-flex align-items-center justify-content-center">
+            <div class="icon d-flex align-items-center justify-content-center">
+                <img src="assets/images/icons/ci-3.png" alt="">
+            </div>
+            <div class="content">
+                <h3 class="title">Çalışma Saatleri</h3>
+                <p><?php echo $contact['working_hours']; ?></p>
+                
+            </div>
+        </div>
+    </div>
+</div>
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="contact__form mt-20">

@@ -1,3 +1,22 @@
+<?php 
+include 'dashboard/config/db.php';
+
+// About Intro verilerini çek
+$stmt_intro = $db->prepare("SELECT * FROM about_intro WHERE id = 1");
+$stmt_intro->execute();
+$intro = $stmt_intro->fetch(PDO::FETCH_ASSOC);
+
+// About Promo verilerini çek
+$stmt_promo = $db->prepare("SELECT * FROM about_promo WHERE id = 1");
+$stmt_promo->execute();
+$promo = $stmt_promo->fetch(PDO::FETCH_ASSOC);
+
+// About Why Us verilerini çek
+$stmt_why = $db->prepare("SELECT * FROM about_why_us ORDER BY id ASC");
+$stmt_why->execute();
+$why_us = $stmt_why->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!doctype html>
 <html class="no-js" lang="tr">
 <head>
@@ -56,104 +75,79 @@
         <!-- breadcrumb area end -->
 
           <!-- about area start -->
-          <section class="about__area about__area--2  position-relative pt-120 pb-130">
-            <span class="shape shape__1 position-absolute"><img src="assets/images/shape/about-shape-2-1.png" alt=""></span>
-            <span class="shape shape__2 position-absolute"><img src="assets/images/shape/about-shape-2-2.png" alt=""></span>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5 col-lg-7">
-                        <div class="about__left about__left--2 position-relative">
-                            <img class="big" src="assets/test1.png" alt="img">
-                            <img class="small position-absolute" src="assets/images/about/about-img-2-2.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-6 offset-xl-1">
-                        <div class="about__right about__right--2 pl-45 pt-45">
-                            <div class="section-heading section-heading__black">
-                                <span class="sub-title">hakkımızda</span>
-                                <h2 class="title mb-25">Yer Yudumda <br> <span style="color: #186650;">Mükemmellik</span></h2>
-                                <p>Orbit Coffee Co., Karamürsel’in sahilinde kaliteyi ve kahve tutkusunu bir araya getiriyor. Sizleri eşsiz kahve deneyimimizle buluşturmak için buradayız.</p>
-                                <p>Kahveye olan tutkumuzu her bir fincanda yansıtıyor, en kaliteli çekirdekleri özenle kavuruyoruz. Amacımız, geleneksel kahve kültürünü modern dokunuşlarla harmanlayarak unutulmaz bir kahve deneyimi sunmaktır. Kaliteyi ve müşteri memnuniyetini her zaman ön planda tutarak, kahve dünyasında kendimizi sürekli geliştiriyoruz.</p>
-                            </div>
-                        </div>
-                    </div>
+          <section class="about__area about__area--2 position-relative pt-120 pb-130">
+    <span class="shape shape__1 position-absolute"><img src="assets/images/shape/about-shape-2-1.png" alt=""></span>
+    <span class="shape shape__2 position-absolute"><img src="assets/images/shape/about-shape-2-2.png" alt=""></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-7">
+                <div class="about__left about__left--2 position-relative">
+                    <img class="big" src="dashboard/uploads/<?php echo $intro['image']; ?>" alt="img">
+                    <img class="small position-absolute" src="assets/images/about/about-img-2-2.png" alt="img">
                 </div>
             </div>
-        </section>
-        <!-- about area end -->
-
-        <!-- wcu section start -->
-        <section class="wcu__area pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12 text-center">
-                        <div class="section-heading section-heading__black mb-60">
-                            <span class="sub-title">neden biz?</span>
-                            <h2 class="title">Orbit Coffee Co.</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-none-30">
-                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30 text-center">
-                        <div class="wcu__item">
-                            <div class="icon">
-                                <img src="assets/images/icons/wcu-1.png" alt="">
-                            </div>
-                            <div class="content">
-                                <h2 class="title">Eşsiz Kahve Deneyimi</h2>
-                                <p>Sizleri eşsiz kahve deneyimimizle buluşturmak için buradayız.</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30 text-center">
-                        <div class="wcu__item">
-                            <div class="icon">
-                                <img src="assets/images/icons/wcu-2.png" alt="">
-                            </div>
-                            <div class="content">
-                                <h2 class="title">Mükemmel Konum</h2>
-                                <p>Orbit Coffee Co., Karamürsel’in sahilinde kaliteyi ve kahve tutkusunu bir araya getiriyor.</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 mt-30 text-center">
-                        <div class="wcu__item">
-                            <div class="icon">
-                                <img src="assets/images/icons/wcu-1.png" alt="">
-                            </div>
-                            <div class="content">
-                                <h2 class="title">Kahve Kalitesi</h2>
-                                <p>En iyi kahve çekirdeklerini özenle kavurup, mükemmel bir tat deneyimi sunuyoruz.</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- wcu section end -->
-
-        <!-- best-coffe section start -->
-        <div class="best-coffe__area position-relative">
-            <div class="best-coffe__bg">
-                <img src="assets/images/bg/best-coffe-1.jpg" alt="">
-            </div>
-            <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-xl-8 pl-35">
-                        <div class="best-coffe__wrapper">
-                            <div class="section-heading section-heading__black">
-                                <h2 class="title mb-25">Her yudumda kaliteyi ve uzmanlığı hissedin.</h2>
-                                <p>Kahve çekirdekleri, doğanın sunduğu bir armağandır. Biz, bu armağanı en yüksek kaliteyle kavurup sizlere sunuyoruz.</p>
-                                <p>Orbit Coffee Co., her bir kahve fincanında mükemmeliyeti hedefleyerek, en kaliteli çekirdekleri özenle kavurur ve en taze ürünleri sunar. Misyonumuz, kahve tutkunlarına sadece bir içecek değil, unutulmaz bir deneyim yaşatmaktır. Her adımda müşteri memnuniyetini ön planda tutarak, kahve kültürünü yenilikçi yaklaşımlarımızla zenginleştiririz.</p>
-                            </div>
-                        </div>
+            <div class="col-xl-6 offset-xl-1">
+                <div class="about__right about__right--2 pl-45 pt-45">
+                    <div class="section-heading section-heading__black">
+                        <span class="sub-title"><?php echo $intro['title1']; ?></span>
+                        <h2 class="title mb-25"><?php echo $intro['title2']; ?></h2>
+                        <p><?php echo $intro['content']; ?></p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+        <!-- about area end -->
+
+        <!-- wcu section start -->
+        <section class="wcu__area pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 text-center">
+                <div class="section-heading section-heading__black mb-60">
+                    <span class="sub-title">neden biz?</span>
+                    <h2 class="title">Orbit Coffee Co.</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-none-30">
+            <?php foreach($why_us as $item): ?>
+            <div class="col-xl-4 col-lg-6 col-md-6 mt-30 text-center">
+                <div class="wcu__item">
+                    <div class="icon">
+                        <img src="dashboard/uploads/<?php echo $item['image']; ?>" alt="">
+                    </div>
+                    <div class="content">
+                        <h2 class="title"><?php echo $item['title']; ?></h2>
+                        <p><?php echo $item['content']; ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+        <!-- wcu section end -->
+
+        <!-- best-coffe section start -->
+        <div class="best-coffe__area position-relative">
+    <div class="best-coffe__bg">
+        <img src="dashboard/uploads/<?php echo $promo['image']; ?>" alt="">
+    </div>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-xl-8 pl-35">
+                <div class="best-coffe__wrapper">
+                    <div class="section-heading section-heading__black">
+                        <h2 class="title mb-25"><?php echo $promo['title']; ?></h2>
+                        <p><?php echo $promo['content']; ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         <!-- best-coffe section end -->
 
         <!-- team section end -->
